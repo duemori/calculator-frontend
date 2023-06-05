@@ -1,4 +1,17 @@
-# CalculatorFrontend
+# Calculator - Frontend
+
+App created to manage calculator operations. UI views expectations:
+- Login (and “sign out” button anywhere available for all session-required screens)
+  - A simple username and password input form
+- New Operation
+  - An input form providing all fields to request a new operation on behalf of the current user
+- User Records
+  - Datatable of all operation records from the current user
+  - Datatable should have pagination (page number and per-page option) and sorting
+  - Datatable should have a filter/search input field for partial matches
+  - Delete button to delete records
+
+**Important:** The development is not finished. Expectation was to integrate with  authentication server and manage login/logout. For now, the userId is informed in every single operation. Since the initial credit was required to execute the operations, created a page specific for that.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.4.
 
