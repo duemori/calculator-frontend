@@ -1,0 +1,30 @@
+<form [formGroup]="creditForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="credit-card">
+    <mat-card-header>
+      <mat-card-title>Credit transaction</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput #userId maxlength="4" placeholder="User Id" type="number" formControlName="userId">
+            <mat-error *ngIf="creditForm.controls.userId.hasError('required')">This field is required</mat-error>
+            <mat-error *ngIf="creditForm.controls.userId.hasError('min')">This field must be greater than zero</mat-error>
+            <mat-error *ngIf="creditForm.controls.userId.hasError('max')">This field must be less than 10000</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput #amount maxlength="10" placeholder="Amount" type="number" formControlName="amount">
+            <mat-error *ngIf="creditForm.controls.amount.hasError('required')">This field is required</mat-error>
+            <mat-error *ngIf="creditForm.controls.amount.hasError('min')">This field must be greater than 0.01</mat-error>
+            <mat-error *ngIf="creditForm.controls.amount.hasError('max')">This field must be less than 9999999.99</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!creditForm.valid">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

@@ -1,0 +1,48 @@
+<form [formGroup]="operationForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="operation-card">
+    <mat-card-header>
+      <mat-card-title>Operation transaction</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-select #operationId placeholder="Operation" formControlName="operationId">
+              <mat-option *ngFor="let operation of operations" [value]="operation.id">
+                {{ operation.description }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="operationForm.controls.operationId.hasError('required')">This field is
+              required</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput #userId maxlength="4" placeholder="User Id" type="number" formControlName="userId">
+            <mat-error *ngIf="operationForm.controls.userId.hasError('required')">This field is required</mat-error>
+            <mat-error *ngIf="operationForm.controls.userId.hasError('min')">This field must be greater than
+              zero</mat-error>
+            <mat-error *ngIf="operationForm.controls.userId.hasError('max')">This field must be less than
+              10000</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div formArrayName="params" class="row">
+        <div class="col" >
+          <mat-form-field class="full-width">
+            <input matInput maxlength="10" placeholder="Amount" type="number" formControlName="0">
+          </mat-form-field>
+        </div>
+        <div class="col" >
+          <mat-form-field class="full-width">
+            <input matInput #amount maxlength="10" placeholder="Amount" type="number" formControlName="1">
+          </mat-form-field>
+        </div>
+      </div>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!operationForm.valid">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
