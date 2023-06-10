@@ -1,7 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+
+import { TokenStorageService } from '../../services/token-storage.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,11 +12,19 @@ import { map, shareReplay } from 'rxjs/operators';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  private breakpointObserver = inject(BreakpointObserver);
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private tokenStorage: TokenStorageService,
+    private router: Router) { }
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
       shareReplay()
     );
+
+  logout() {
+    this.tokenStorage.remove();
+    this.router.navigate(['/login']);
+  }
 }

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
 import { FormBuilder, Validators } from '@angular/forms';
-import { TransactionsService } from '../../transactions.service';
-import { Operation } from '../../operation';
 
+import { TransactionsService } from '../../services/transactions.service';
+import { Operation } from '../../models/operation';
 
 @Component({
   selector: 'app-operation',

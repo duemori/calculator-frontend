@@ -2,8 +2,9 @@ import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Observable, BehaviorSubject, finalize } from 'rxjs';
-import { TransactionsService } from '../../transactions.service';
-import { Transaction } from '../../transaction';
+
+import { TransactionsService } from '../../services/transactions.service';
+import { Transaction } from '../../models/transaction';
 
 export class TransactionsDataSource extends DataSource<Transaction> {
   data: Transaction[] = [];

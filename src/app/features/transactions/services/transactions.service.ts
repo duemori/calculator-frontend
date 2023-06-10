@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
 import { Observable, of, catchError } from 'rxjs';
-import { Transaction } from './transaction';
-import { Pageable } from 'src/app/core/model/pageable';
-import { Operation } from './operation';
 
-@Injectable({
-  providedIn: 'root'
-})
+import { environment } from 'src/environments/environment';
+import { Transaction } from '../models/transaction';
+import { Pageable } from 'src/app/core/models/pageable';
+import { Operation } from '../models/operation';
+
+@Injectable({ providedIn: 'root' })
 export class TransactionsService {
 
   constructor(private http: HttpClient) { }
@@ -22,7 +21,7 @@ export class TransactionsService {
         .set('sortBy', sortBy)
         .set('sortDirection', sortDirection.toUpperCase())
     }).pipe(
-      catchError(this.handleError<Pageable<Transaction>>('getTransactions'))
+      catchError(this.handleError<Pageable<Transaction>>('getTransactions', { content: [], last: true, size: 0, totalElements: 0, totalPages: 0 }))
     );
   }
 

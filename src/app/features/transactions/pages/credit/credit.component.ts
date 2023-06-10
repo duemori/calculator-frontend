@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-
 import { FormBuilder, Validators } from '@angular/forms';
-import { TransactionsService } from '../../transactions.service';
+
+import { TransactionsService } from '../../services/transactions.service';
 
 
 @Component({

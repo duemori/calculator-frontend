@@ -7,7 +7,7 @@ import { TransactionsComponent } from './features/transactions/pages/list/transa
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -20,10 +20,13 @@ import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OperationComponent } from './features/transactions/pages/operation/operation.component';
 import { MatIconModule } from '@angular/material/icon';
-import { NavbarComponent } from './core/navbar/navbar.component';
+import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { LoginModule } from './features/login/login.module';
+import { MainComponent } from './shared/main/main.component';
+import { TransactionRequestInterceptor } from './core/interceptors/transaction-request.interceptor';
 
 @NgModule({
   declarations: [
@@ -31,11 +34,13 @@ import { MatListModule } from '@angular/material/list';
     TransactionsComponent,
     CreditComponent,
     OperationComponent,
-    NavbarComponent
+    NavbarComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    LoginModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
@@ -54,7 +59,13 @@ import { MatListModule } from '@angular/material/list';
     MatSidenavModule,
     MatListModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TransactionRequestInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

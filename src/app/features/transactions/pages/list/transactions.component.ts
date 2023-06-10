@@ -2,10 +2,11 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { MatTable } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { TransactionsDataSource } from './transactions-datasource';
-import { TransactionsService } from '../../transactions.service';
-import { Transaction } from '../../transaction';
 import { tap, fromEvent, debounceTime, distinctUntilChanged, merge } from 'rxjs';
+
+import { TransactionsDataSource } from './transactions-datasource';
+import { TransactionsService } from '../../services/transactions.service';
+import { Transaction } from '../../models/transaction';
 
 @Component({
   selector: 'app-transactions',
