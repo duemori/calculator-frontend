@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Observable, catchError, of } from 'rxjs';
+import { Observable, catchError } from 'rxjs';
 
 import { Token } from '../../../core/models/token';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { ErrorHandlerService } from 'src/app/core/services/error-handler.service';
 
 const body = new HttpParams()
-      .set('scope', 'message:read')
+      .set('scope', 'ADMIN')
       .set('grant_type', 'client_credentials');
 
 @Injectable()
 export class AuthService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private errorHandler: ErrorHandlerService) { }
 
   login(email: string, password: any): Observable<Token> {
     const options = {
@@ -21,14 +22,7 @@ export class AuthService {
       };
 
     return this.http.post<Token>(`${environment.authUrl}/oauth2/token`, body, options).pipe(
-      catchError(this.handleError<Token>('login'))
+      catchError(this.errorHandler.handle<Token>('login', 'Invalid email or password!'))
     );
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(`${operation} failed`, error);
-      return of(result as T);
-    };
   }
 }

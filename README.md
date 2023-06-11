@@ -11,7 +11,7 @@ App created to manage calculator operations. UI views expectations:
   - Datatable should have a filter/search input field for partial matches
   - Delete button to delete records
 
-**Important:** The development is not finished. Expectation was to integrate with  authentication server and manage login/logout. For now, the userId is informed in every single operation. Since the initial credit was required to execute the operations, created a page specific for that.
+**Important:** The development is not finished. For now, the userId is informed in every single operation. Since the initial credit was required to execute the operations, created a page specific for that.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.4.
 

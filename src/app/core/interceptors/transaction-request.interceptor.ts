@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { TokenStorageService } from '../services/token-storage.service';
 import { environment } from 'src/environments/environment';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class TransactionRequestInterceptor implements HttpInterceptor {
   constructor(private tokenStorage: TokenStorageService) { }
 

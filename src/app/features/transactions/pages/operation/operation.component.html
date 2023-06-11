@@ -7,7 +7,7 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <mat-select #operationId placeholder="Operation" formControlName="operationId">
+            <mat-select #operationId placeholder="Operation" formControlName="operationId" (selectionChange)="onChange($event.value)">
               <mat-option *ngFor="let operation of operations" [value]="operation.id">
                 {{ operation.description }}
               </mat-option>
@@ -28,14 +28,14 @@
         </div>
       </div>
       <div formArrayName="params" class="row">
-        <div class="col" >
+        <div class="col" *ngIf="parameters > 0">
           <mat-form-field class="full-width">
             <input matInput maxlength="10" placeholder="Amount" type="number" formControlName="0">
           </mat-form-field>
         </div>
-        <div class="col" >
+        <div class="col" *ngIf="parameters > 1">
           <mat-form-field class="full-width">
-            <input matInput #amount maxlength="10" placeholder="Amount" type="number" formControlName="1">
+            <input matInput maxlength="10" placeholder="Amount" type="number" formControlName="1">
           </mat-form-field>
         </div>
       </div>

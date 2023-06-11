@@ -4,7 +4,7 @@ import { ActivatedRouteSnapshot, RouterStateSnapshot, CanActivateFn, Router } fr
 import { TokenStorageService } from "../services/token-storage.service";
 
 @Injectable({ providedIn: 'root' })
-class AuthGuardService {
+class LoggedAuthGuardService {
   constructor(private router: Router, private tokenStorage: TokenStorageService) {}
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
@@ -18,6 +18,6 @@ class AuthGuardService {
   }
 }
 
-export const AuthGuard: CanActivateFn = (next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean => {
-  return inject(AuthGuardService).canActivate(next, state);
+export const LoggedAuthGuard: CanActivateFn = (next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean => {
+  return inject(LoggedAuthGuardService).canActivate(next, state);
 }

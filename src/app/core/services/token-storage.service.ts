@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 const KEY = 'access-token';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class TokenStorageService {
   set(value: string) {
     localStorage.setItem(KEY, value);

@@ -6,14 +6,15 @@ import { TransactionsComponent } from './features/transactions/pages/list/transa
 import { OperationComponent } from './features/transactions/pages/operation/operation.component';
 import { LoginComponent } from './features/login/pages/login/login.component';
 import { MainComponent } from './shared/main/main.component';
-import { AuthGuard } from './core/guard/auth-guard.service';
+import { LoggedAuthGuard } from './core/guard/logged-auth-guard.service';
+import { NotLoggedAuthGuard } from './core/guard/not-logged-auth-guard.service';
 
 const routes: Routes = [
   {
-    path: 'login', component: LoginComponent
+    path: 'login', component: LoginComponent, canActivate: [NotLoggedAuthGuard]
   },
   {
-    path: '', component: MainComponent, canActivate: [AuthGuard],
+    path: '', component: MainComponent, canActivate: [LoggedAuthGuard],
     children: [
       { path: 'credit', component: CreditComponent },
       { path: 'transactions', component: TransactionsComponent },

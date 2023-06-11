@@ -1,25 +1,27 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { ReactiveFormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-import { LoginComponent } from './pages/login/login.component';
 import { AuthService } from './services/auth.service';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
     LoginComponent
   ],
   imports: [
+    CommonModule,
     HttpClientModule,
-    BrowserAnimationsModule,
     MatInputModule,
     MatButtonModule,
     MatCardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule
   ],
   exports: [
     LoginComponent
