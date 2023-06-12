@@ -16,16 +16,6 @@
               required</mat-error>
           </mat-form-field>
         </div>
-        <div class="col">
-          <mat-form-field class="full-width">
-            <input matInput #userId maxlength="4" placeholder="User Id" type="number" formControlName="userId">
-            <mat-error *ngIf="operationForm.controls.userId.hasError('required')">This field is required</mat-error>
-            <mat-error *ngIf="operationForm.controls.userId.hasError('min')">This field must be greater than
-              zero</mat-error>
-            <mat-error *ngIf="operationForm.controls.userId.hasError('max')">This field must be less than
-              10000</mat-error>
-          </mat-form-field>
-        </div>
       </div>
       <div formArrayName="params" class="row">
         <div class="col" *ngIf="parameters > 0">

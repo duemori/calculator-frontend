@@ -18,14 +18,10 @@ export class OperationComponent implements OnInit {
 
   operationForm = this.fb.group({
     operationId: [null, Validators.required],
-    userId: [null, Validators.compose([
-      Validators.required, Validators.min(1), Validators.max(9999)])],
     params: this.fb.array([
-      [null, Validators.compose([
-        Validators.required, Validators.min(0.01), Validators.max(9999999.99)])]
+      [null, PARAMS_VALIDATOR]
       ,
-      [null, Validators.compose([
-        Validators.required, Validators.min(0.01), Validators.max(9999999.99)])]
+      [null, PARAMS_VALIDATOR]
     ])
   });
 

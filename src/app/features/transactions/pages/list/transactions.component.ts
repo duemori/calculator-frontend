@@ -22,7 +22,7 @@ export class TransactionsComponent implements OnInit, AfterViewInit {
 
   transactionsCount = 0;
 
-  displayedColumns = ['id', 'userId', 'operation', 'amount', 'creditDebit', 'params', 'response', 'date', 'delete'];
+  displayedColumns = ['id', 'operation', 'amount', 'creditDebit', 'params', 'response', 'date', 'delete'];
 
   constructor(private service: TransactionsService) {
     this.dataSource = new TransactionsDataSource(service);
