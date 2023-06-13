@@ -1,8 +1,11 @@
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { HttpClientModule } from '@angular/common/http';
+import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TransactionsComponent } from './transactions.component';
 
@@ -14,10 +17,13 @@ describe('TransactionsComponent', () => {
     TestBed.configureTestingModule({
       declarations: [TransactionsComponent],
       imports: [
-        NoopAnimationsModule,
+        HttpClientModule,
+        MatSnackBarModule,
+        MatInputModule,
         MatPaginatorModule,
-        MatSortModule,
         MatTableModule,
+        MatSortModule,
+        BrowserAnimationsModule
       ]
     }).compileComponents();
   }));

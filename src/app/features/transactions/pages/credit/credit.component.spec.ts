@@ -1,11 +1,10 @@
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { HttpClientModule } from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';
-import { MatRadioModule } from '@angular/material/radio';
-import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CreditComponent } from './credit.component';
 
@@ -17,13 +16,12 @@ describe('CreditComponent', () => {
     TestBed.configureTestingModule({
       declarations: [CreditComponent],
       imports: [
-        NoopAnimationsModule,
-        ReactiveFormsModule,
-        MatButtonModule,
+        HttpClientModule,
+        MatSnackBarModule,
         MatCardModule,
         MatInputModule,
-        MatRadioModule,
-        MatSelectModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule
       ]
     }).compileComponents();
   }));

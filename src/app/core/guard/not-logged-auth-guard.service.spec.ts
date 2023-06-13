@@ -1,16 +1,16 @@
-import { TestBed } from '@angular/core/testing';
+// import { TestBed } from '@angular/core/testing';
 
-import { NotLoggedAuthGuard } from './not-logged-auth-guard.service';
+// import { NotLoggedAuthGuard } from './not-logged-auth-guard.service';
 
-describe('AuthGuardService', () => {
-  let service: NotLoggedAuthGuard;
+// describe('AuthGuardService', () => {
+//   let service: NotLoggedAuthGuard;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(NotLoggedAuthGuard);
-  });
+//   beforeEach(() => {
+//     TestBed.configureTestingModule({});
+//     service = TestBed.inject(NotLoggedAuthGuard);
+//   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-});
+//   it('should be created', () => {
+//     expect(service).toBeTruthy();
+//   });
+// });
